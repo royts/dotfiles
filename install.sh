@@ -1,0 +1,1 @@
+cp  ~/dotfiles/bash/.bashrc ~/
