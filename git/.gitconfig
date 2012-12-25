@@ -1,5 +1,6 @@
 # many goodies from here and all around http://stackoverflow.com/questions/267761/what-does-your-gitconfig-contain
 # should say thanks to: github.com/rantav/dotfiles and github.com/holman/dotfiles
+
 [user]
 	name = Roy Tsabari
 	email = a300600@gmail.com
