@@ -1,3 +1,20 @@
+
+"automatically reload vimrc when it's saved
+au BufWritePost .vimrc so ~/.vimrc
+
+"tabs colors
+
+hi TabLineSel ctermfg=White ctermbg=LightGreen
+hi TabLine ctermfg=Gray ctermbg=Black
+hi TabLineFill ctermfg=Black ctermbg=Black
+
+
+" Make Arrow Keys Useful
+nmap <up>       :bp<CR>
+nmap <down>     :bn<CR>
+nmap <left>     :tabp<CR>
+nmap <right>    :tabn<CR>
+
 " ---- thanks zak holman https://github.com/holman/dotfiles/blob/master/vim/vimrc.symlink --------------
 
 set noswapfile
@@ -85,4 +102,5 @@ function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
+
 
