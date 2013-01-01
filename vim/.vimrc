@@ -1,5 +1,13 @@
 
-"automatically reload vimrc when it's saved
+set guioptions-=T  "remove toolbar
+
+"start maximized
+set lines=9999 columns=9999
+
+"alaways show tab bar in gvim"
+set showtabline=2
+
+"automaticall reload vimrc when it's saved
 au BufWritePost .vimrc so ~/.vimrc
 
 "tabs colors
@@ -44,7 +52,7 @@ set virtualedit=block      " allow virtual edit in visual block ..
 let mapleader = ","
 
 " exit to normal mode with 'jj'
-inoremap jj <ESC>
+imap jj <ESC>
 
 
 " reflow paragraph with Q in normal and visual mode
