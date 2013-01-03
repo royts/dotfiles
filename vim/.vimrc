@@ -1,3 +1,6 @@
+autocmd VimEnter * NERDTree "load NerdTree"
+autocmd BufEnter * NERDTreeMirror
+autocmd VimEnter * wincmd w "move the cursor back to main window"
 
 set guioptions-=T  "remove toolbar
 
