@@ -3,13 +3,16 @@
 
 alias gvir="gvim --remote"
 
+alias ll="ls -l"
+
+alias cd..="cd .."
 ###################
 ### dev machine ###
 ###################
 
 export PYTHONPATH=/home/$USER/bin/hive/build/dist/lib/py/
 
-export JAVA_HOME=/usr/lib/jvm/java-6-sun
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 export PATH=$PATH:$JAVA_HOME/bin:/home/$USER/scripts/
 
 # set a nice command prompt
@@ -51,7 +54,7 @@ function mvn-make-all-related {
 }
 
 # maven setup
-export M2_HOME=/home/$USER/bin/apache-maven
+export M2_HOME=/home/$USER/bin/maven
 export M2=$M2_HOME/bin
 export M2=$M2_HOME/bin
 export PATH=$M2:$PATH
