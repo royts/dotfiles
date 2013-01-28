@@ -1,6 +1,50 @@
 # set a nice command prompt
 #export PS1="\[\e[32;1m\]\w\[\e[20;1m\] $ \[\e[20;0m\]"
 
+
+
+# make ls coloured, and append characters to denote filetype ( eg trailing / on directory names)
+alias ls='ls -F --color=auto'
+
+# short for ls
+alias l='ls'
+
+# show only hidden files
+alias l.='ls -d .*'
+
+# list all files
+alias la='ls -a'
+
+# long format listing
+ alias ll="ls -l"
+
+ # list only directories
+ alias lsd='ls -d */'
+
+ # list, order by extension
+ alias lx='ls -X'
+
+# previous directory
+alias p='cd -'
+
+# short for cd ..
+alias s='cd ..'
+
+# allow omission of space in cd ..
+alias cd..='cd ..'
+
+# Remove a directory
+alias rd='rmdir'
+
+# Make a directory
+alias md='mkdir'
+
+# make cp, rm, and mv interactive by default,
+alias mv='mv -i'
+alias rm='rm -i'
+alias cp='cp -i'
+alias sudo="sudo " # workaround for running the cp, rm anv mv interactivly as sudo 
+
 alias gvir="gvim --remote"
 
 alias ll="ls -l"
@@ -27,7 +71,7 @@ export JPDA_TRANSPORT=dt_socket
 export JAVA_OPTS='-Xmx2048m -Xms512m -XX:MaxPermSize=512m'
 export CATALINA_OPTS='-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.outbrain.environment=dev -Dlog4j.configuration=file:///home/$USER/dev/log4j.xml -Djava.awt.headless=true'
 export CATALINA_PID=~/dev/temp/catalina.pid
-export TOMCAT_HOME=~/bin/apache-tomcat/
+export TOMCAT_HOME=~/bin/tomcat/
 
 # environment for unit tests
 export com_outbrain_environment=junit
