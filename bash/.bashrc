@@ -1,7 +1,7 @@
 # set a nice command prompt
-#export PS1="\[\e[32;1m\]\w\[\e[20;1m\] $ \[\e[20;0m\]"
+# export PS1="\[\e[32;1m\]\w\[\e[20;1m\] $ \[\e[20;0m\]"
 
-
+alias grep='grep --color'
 
 # make ls coloured, and append characters to denote filetype ( eg trailing / on directory names)
 alias ls='ls -F --color=auto'
@@ -30,20 +30,14 @@ alias p='cd -'
 # short for cd ..
 alias s='cd ..'
 
-# allow omission of space in cd ..
+# allow omission of space in cd .. and cd -
 alias cd..='cd ..'
-
+alias cd-='cd -'
 # Remove a directory
 alias rd='rmdir'
 
 # Make a directory
 alias md='mkdir'
-
-# make cp, rm, and mv interactive by default,
-alias mv='mv -i'
-alias rm='rm -i'
-alias cp='cp -i'
-alias sudo="sudo " # workaround for running the cp, rm anv mv interactivly as sudo 
 
 alias gvir="gvim --remote"
 
@@ -52,7 +46,7 @@ alias ll="ls -l"
 alias cd..="cd .."
 ###################
 ### dev machine ###
-###################
+#################
 
 export PYTHONPATH=/home/$USER/bin/hive/build/dist/lib/py/
 
