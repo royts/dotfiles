@@ -1,5 +1,3 @@
-call pathogen#infect()
-
 " NERDTree
 autocmd VimEnter * NERDTree "load NerdTree"
 autocmd BufEnter * NERDTreeMirror
@@ -18,13 +16,13 @@ let g:html_indent_style1 = "inc"
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
 
-
+execute pathogen#infect()
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
   set t_Co=256
 endif
 
-colorscheme xoria256
+set colorscheme=xoria256
 
 :nmap \e :NERDTreeToggle<CR>
 
@@ -60,9 +58,10 @@ set showtabline=2
 au BufWritePost .vimrc so ~/.vimrc
 
 "tabs colors
-"hi TabLineSel ctermfg=White ctermbg=LightGreen
-"hi TabLine ctermfg=Gray ctermbg=Black
-"hi TabLineFill ctermfg=Black ctermbg=Black
+
+hi TabLineSel ctermfg=White ctermbg=LightGreen
+hi TabLine ctermfg=Gray ctermbg=Black
+hi TabLineFill ctermfg=Black ctermbg=Black
 
 
 " Make Arrow Keys Useful

@@ -39,7 +39,8 @@ alias rd='rmdir'
 # Make a directory
 alias md='mkdir'
 
-alias gvir="gvim --remote"
+# open docs in existing gvim window
+gvim () { command gvim --remote-tab-silent $@ || command gvim $@; }
 
 alias ll="ls -l"
 
