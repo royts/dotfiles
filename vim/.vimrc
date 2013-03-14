@@ -1,24 +1,31 @@
 call pathogen#infect()
 
 " NERDTree
-autocmd VimEnter * NERDTree "load NerdTree"
-autocmd BufEnter * NERDTreeMirror
-autocmd VimEnter * wincmd w "move the cursor back to main window"
+"autocmd VimEnter * NERDTree "load NerdTree"
+"autocmd BufEnter * NERDTreeMirror
+"autocmd VimEnter * wincmd w "move the cursor back to main window"
 set autochdir
 let NERDTreeChDirMode=2 
 let NERDTreeShowHidden=1
 nnoremap <leader>n :NERDTree .<CR>
+
+"ctrlP plugin
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "vim-javascript - github.com/pangloss/vim-javascript
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-" Switch to alternate file
-map <C-Tab> :bnext<cr>
-map <C-S-Tab> :bprevious<cr>
+"navigation like firefox
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
 
-
+:vmap <F5> "zxP
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
   set t_Co=256
@@ -26,7 +33,10 @@ endif
 
 colorscheme xoria256
 
-:nmap \e :NERDTreeToggle<CR>
+"tabnew shortcats
+ca tn tabnew
+ca th tabp
+ca tl tabn
 
 "highlight search etc."
 set incsearch

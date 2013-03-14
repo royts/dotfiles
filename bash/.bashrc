@@ -45,6 +45,25 @@ gvim () { command gvim --remote-tab-silent $@ || command gvim $@; }
 alias ll="ls -l"
 
 alias cd..="cd .."
+
+#keyboard layout
+function changekeyboardLayoutToRegular(){
+  echo 1 | sudo tee /sys/module/hid_apple/parameters/fnmode
+  xmodmap ~/dotfiles/bash/regularConfig.xmodmappings
+}
+function changeKeyboardLayoutToApple(){
+
+  echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
+  xmodmap ~/dotfiles/bash/appaleConfig.xmodmappings
+
+}
+function changeFontScaleBig (){
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1.2 
+}
+function changeFontScaleRegular(){
+  gsettings set org.gnome.desktop.interface text-scaling-factor 1 
+  
+}
 ###################
 ### dev machine ###
 #################
