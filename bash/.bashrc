@@ -47,14 +47,14 @@ alias ll="ls -l"
 alias cd..="cd .."
 
 #keyboard layout
-function changekeyboardLayoutToRegular(){
+function changeKeyboardLayoutToRegular(){
   echo 1 | sudo tee /sys/module/hid_apple/parameters/fnmode
-  xmodmap ~/dotfiles/bash/regularConfig.xmodmappings
+  xmodmap ~/dotfiles/bash/.regularConfig.xmodmappings
 }
 function changeKeyboardLayoutToApple(){
 
   echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
-  xmodmap ~/dotfiles/bash/appaleConfig.xmodmappings
+  xmodmap ~/dotfiles/bash/.appleConfig.xmodmappings
 
 }
 function changeFontScaleBig (){
@@ -63,6 +63,14 @@ function changeFontScaleBig (){
 function changeFontScaleRegular(){
   gsettings set org.gnome.desktop.interface text-scaling-factor 1 
   
+}
+function goodMorning () {
+  cd ~/dev/git/outbrain/trunk/ ;
+  git stash;
+  git svn rebase;
+  git stash pop;
+  mvn-all -T16;
+  mvn test -P integration -T16;
 }
 ###################
 ### dev machine ###
