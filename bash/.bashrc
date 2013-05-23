@@ -1,5 +1,10 @@
+# open locatin in file browser
+alias browse='xdg-open'
+
 # set a nice command prompt
 # export PS1="\[\e[32;1m\]\w\[\e[20;1m\] $ \[\e[20;0m\]"
+
+alias webServerHere='python -m SimpleHTTPServer 8000'
 
 alias grep='grep --color'
 
@@ -33,8 +38,7 @@ alias s='cd ..'
 # allow omission of space in cd .. and cd -
 alias cd..='cd ..'
 alias cd-='cd -'
-# Remove a directory
-alias rd='rmdir'
+# Remove a directoryalias rd='rmdir'
 
 # Make a directory
 alias md='mkdir'
@@ -143,3 +147,23 @@ export ANT_LIB=/usr/share/ant/lib
 # download colored-svn from the attachment section below and put it under /home/$USER/bin/
 
 alias svn=/home/$USER/bin/colored-svn
+
+#function appendSoftwareListCommand {
+#  if[$# > 1]
+#  then
+#    echo "### $0" >> ~/dotfiles/software/installSoftware.sh
+#    echo "$1" >> ~/dotfiles/software/installSoftware.sh
+#  else
+#     echo "### $0" >> ~/dotfiles/software/installSoftware.sh
+#  fi
+#
+#}
+######## git ######
+function gitIsDirty {
+  if [$(git diff --shortstat 2> /dev/null | tail -n1) != "" ] 
+    then
+      return 1
+  else
+    return 0
+  fi
+}
