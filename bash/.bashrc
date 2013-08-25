@@ -50,6 +50,30 @@ alias ll="ls -l"
 
 alias cd..="cd .."
 
+export MARKPATH=$HOME/.marks
+function jump { 
+      cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+function mark { 
+      mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+function unmark { 
+      rm -i "$MARKPATH/$1"
+}
+function marks {
+      ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+}
+
+_completemarks() {
+    local curw=${COMP_WORDS[COMP_CWORD]}
+      local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+        COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+          return 0
+}
+
+complete -F _completemarks jump unmark
+
+
 #keyboard layout
 function changeKeyboardLayoutToRegular(){
   echo 1 | sudo tee /sys/module/hid_apple/parameters/fnmode
@@ -79,7 +103,7 @@ function goodMorning () {
 ###################
 ### dev machine ###
 #################
-
+alias outbrainTrunk='/home/rtsabari/dev/git/outbrain/trunk'
 export PYTHONPATH=/home/$USER/bin/hive/build/dist/lib/py/
 
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle

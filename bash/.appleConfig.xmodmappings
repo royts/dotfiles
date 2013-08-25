@@ -27,3 +27,4 @@ add control = Control_R
 
 !handle the tilde keycode
 keycode 94 = asciitilde
+

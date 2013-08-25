@@ -1,6 +1,7 @@
-sudo cp ~/dotfiles/bash/.bashrc ~/
-sudo cp ~/dotfiles/git/.gitconfig ~/
-sudo cp ~/dotfiles/vim/.vimrc ~/
-sudo cp -R ~/dotfiles/vim/.vim ~/
-sudo chmod -R 777 ~/.vim/bundle/
+cp -Rf ~/dotfiles/bash/.bashrc ~/
+cp -Rf ~/dotfiles/git/.gitconfig ~/
+cp -Rf ~/dotfiles/vim/. ~/
+chmod -R 777 ~/.vim/bundle/
+cp ~/dotfiles/jshint/jshintrc.json ~/
+mv -f ~/jshintrc.json ~/.jshintrc
 
