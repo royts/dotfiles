@@ -6,13 +6,13 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " """ NERDTree """
 " strat woth vim
-autocmd VimEnter * NERDTree "load NerdTree"
+ autocmd VimEnter * NERDTree "load NerdTree"
 
 " ctrl+n to toggle 
-autocmd vimenter * if !argc() | NERDTree | endif
+ autocmd vimenter * if !argc() | NERDTree | endif
 
 " close vim if the last window is nerdtree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 """ """
 
