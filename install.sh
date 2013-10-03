@@ -4,4 +4,5 @@ cp -Rf ~/dotfiles/vim/. ~/
 chmod -R 777 ~/.vim/bundle/
 cp ~/dotfiles/jshint/jshintrc.json ~/
 mv -f ~/jshintrc.json ~/.jshintrc
+cp -f ~/dotfiles/zsh/.zshrc ~/
 

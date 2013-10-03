@@ -43,6 +43,9 @@ alias cd-='cd -'
 # Make a directory
 alias md='mkdir'
 
+# ingnore case in tab completion
+bind 'set completion-ignore-case on'
+
 # open docs in existing gvim window
 gvim () { command gvim --remote-tab-silent $@ || command gvim $@; }
 
@@ -65,10 +68,10 @@ function marks {
 }
 
 _completemarks() {
-    local curw=${COMP_WORDS[COMP_CWORD]}
-      local wordlist=$(find $MARKPATH -type l -printf "%f\n")
-        COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
-          return 0
+  local curw=${COMP_WORDS[COMP_CWORD]}
+  local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+  return 0
 }
 
 complete -F _completemarks jump unmark
@@ -129,9 +132,9 @@ export com_outbrain_environment=junit
 alias mvn-eclipse='mvn eclipse:eclipse -Dwtpversion=2.0 -DdownloadSources=true  -DdownloadJavadocs=true'
 alias mvn-install='mvn install -DskipTests=true -DwarProject.packaging=jar'
 alias mvn-clean-install='mvn clean install -DskipTests=true -DwarProject.packaging=jar'
-alias mvn-clean-install-eclipse='mvn clean install eclipse:eclipse -DskipTests=true -DwarProject.packaging=jar -Dwtpversion=2.0 -DdownloadSources=true -DdownloadJavadocs=true'
+alias mvn-clean-install-eclipse='mvn clean install  -DskipTests=true  eclipse:eclipse -DwarProject.packaging=jar -Dwtpversion=2.0 -DdownloadSources=true -DdownloadJavadocs=true' 
 alias mvn-clean-compile-all='mvn clean test-compile'
-alias mvn-all='mvn-clean-install-eclipse'
+alias mvn-all='mvn-clean-install'
 
 alias ps-java='ps aux | grep java'
 
