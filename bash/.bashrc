@@ -1,6 +1,8 @@
 # open locatin in file browser
 alias browse='xdg-open'
 
+alias disableTouchpad='synclient TouchpadOff=1'
+alias enableTouchpad='synclient TouchpadOff=0'
 # set a nice command prompt
 # export PS1="\[\e[32;1m\]\w\[\e[20;1m\] $ \[\e[20;0m\]"
 
@@ -102,6 +104,9 @@ function goodMorning () {
   git stash pop;
   mvn-all -T16;
   mvn test -P integration -T16;
+}
+function testBeforeCommit() {
+  mvn test -pl $1 -Pintegration -T4C 
 }
 ###################
 ### dev machine ###

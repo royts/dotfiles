@@ -2,20 +2,36 @@ call pathogen#infect()
 
 " ctrlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-
+let g:ctrlp_map = '<c-p>'
 
 " """ NERDTree """
-" strat woth vim
- autocmd VimEnter * NERDTree "load NerdTree"
+" strat with vim
+" autocmd VimEnter * NERDTree "load NerdTree"
 
 " ctrl+n to toggle 
- autocmd vimenter * if !argc() | NERDTree | endif
+ "autocmd vimenter * if !argc() | NERDTree | endif
 
 " close vim if the last window is nerdtree
  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-""" """
 
+
+" jshint2
+
+" Lint JavaScript files after reading it:
+let jshint2_read = 1
+
+"Lint JavaScript files after saving it:
+let jshint2_save = 1
+
+"Skip lint confirmation for non JavaScript files:
+let jshint2_confirm = 0
+
+"Quick lint mapping:
+nnoremap <silent><F1> :JSHint<CR>
+inoremap <silent><F1> <C-O>:JSHint<CR>
+vnoremap <silent><F1> :JSHint<CR>
+cnoremap <F1> JSHint
 
 "vim-javascript - github.com/pangloss/vim-javascript
 let g:html_indent_inctags = "html,body,head,tbody"
@@ -41,8 +57,8 @@ set smartcase
 set hlsearch
 nmap \q :nohlsearch<CR>
 
-
-set guioptions-=T  "remove toolbar
+"remove toolbar
+set guioptions-=T  
 
 "screen size
 if has("gui_running")
