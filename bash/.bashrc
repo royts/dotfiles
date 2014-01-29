@@ -171,13 +171,13 @@ export TOMCAT_HOME=~/bin/tomcat/
 # environment for unit tests
 export com_outbrain_environment=junit
 
-alias mvn-eclipse='mvn eclipse:eclipse -Dwtpversion=2.0 -DdownloadSources=true  -DdownloadJavadocs=true'
-alias mvn-install='mvn install -DskipTests=true -DwarProject.packaging=jar'
-alias mvn-clean-install="mvn clean install -DskipTests=true -DwarProject.packaging=jar  | egrep --color 'FAILURE|^'"
-alias mvn-clean-install-eclipse='mvn clean install  -DskipTests=true  eclipse:eclipse -DwarProject.packaging=jar -Dwtpversion=2.0 -DdownloadSources=true -DdownloadJavadocs=true' 
-alias mvn-clean-compile-all='mvn clean test-compile'
-alias mvn-all="mvn-clean-install  | egrep --color 'FAILURE|^'"
-alias mvn-test-fast="mvn test -T4C | egrep --color 'FAILURE|^'"
+alias mvn-eclipse='mvn2 eclipse:eclipse -Dwtpversion=2.0 -DdownloadSources=true  -DdownloadJavadocs=true'
+alias mvn-install='mvn2 install -DskipTests=true -DwarProject.packaging=jar'
+alias mvn-clean-install="mvn2 clean install -DskipTests=true -DwarProject.packaging=jar"
+alias mvn-clean-install-eclipse='mvn2 clean install  -DskipTests=true  eclipse:eclipse -DwarProject.packaging=jar -Dwtpversion=2.0 -DdownloadSources=true -DdownloadJavadocs=true' 
+alias mvn-clean-compile-all='mvn2 clean test-compile'
+alias mvn-all="mvn-clean-install"
+alias mvn-test-fast="mvn2 test"
 alias ps-java='ps aux | grep java'
 
 function mvn-make {
