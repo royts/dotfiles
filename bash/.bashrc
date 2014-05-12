@@ -78,6 +78,24 @@ _completemarks() {
 
 complete -F _completemarks jump unmark
 
+function cdm () {
+  mkdir $1 && cd $1
+}
+# get all proccess ids by name
+function pidsByName () {
+
+  ps -cx -o pid,command | {
+        while read pid command
+              do
+                        if [ "_$command" = "_$1" ]
+                                  then
+                                              # Do something with the pid
+                                                          echo Found: pid=$pid, command=$command
+                                                                      break
+                                                                              fi
+                                                                                  done
+  }
+}
 
 #keyboard layout
 function changeKeyboardLayoutToRegular(){
