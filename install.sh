@@ -1,8 +1,6 @@
-cp -Rf ~/dotfiles/bash/.bashrc ~/
-cp -Rf ~/dotfiles/git/.gitconfig ~/
-cp -Rf ~/dotfiles/vim/. ~/
-chmod -R 777 ~/.vim/bundle/
-cp ~/dotfiles/jshint/jshintrc.json ~/
-mv -f ~/jshintrc.json ~/.jshintrc
-cp -f ~/dotfiles/zsh/.zshrc ~/
+#! /bin/bash
 
+cp -Rf ~/dotfiles/bash/ ~/
+cp -Rf  ~/dotfiles/git ~/
+cp -Rf ~/dotfiles/jshint ~/
+cp -Rf ~/dotfiles/vim ~/

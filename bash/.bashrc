@@ -115,16 +115,9 @@ function changeFontScaleRegular(){
   gsettings set org.gnome.desktop.interface text-scaling-factor 1 
   
 }
-function goodMorning () {
-  cd ~/dev/git/outbrain/trunk/ ;
-  git stash;
-  git svn rebase;
-  git stash pop;
-  mvn-all -T16;
-  mvn test -P integration -T16;
-}
+
 function testBeforeCommit() {
-  mvn test -pl $1 -Pintegration -T4C 
+  mvn2 test -pl $1 -Pintegration -T4C 
 }
 
 PURPLE=$(echo -en "\033[35m")
