@@ -1,0 +1,21 @@
+
+alias webServerHere='python -m SimpleHTTPServer 8000'
+
+alias grep='grep --color'
+
+# long format listing
+ alias ll="ls -l"
+
+# list only directories
+alias lsd='ls -d */'
+
+# list, order by extension
+alias lx='ls -X'
+
+# allow omission of space in cd .. and cd -
+alias cd..='cd ..'
+alias cd-='cd -'
+
+function cdm () {
+  mkdir $1 && cd $1
+}
