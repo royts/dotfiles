@@ -1,3 +1,13 @@
+export PYTHONPATH=/home/$USER/bin/hive/build/dist/lib/py/
+
+if [[ "$platform" == "linux" ]]; then
+  export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+else
+  export JAVA_HOME=$(/usr/libexec/java_home)
+fi
+
+export PATH=$PATH:$JAVA_HOME/bin:/home/$USER/scripts/
+
 function testBeforeCommit() {
   mvn2 test -pl $1 -Pintegration -T4C
 }
