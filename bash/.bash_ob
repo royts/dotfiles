@@ -56,7 +56,7 @@ alias mvn-install='mvn2 install -DskipTests=true -DwarProject.packaging=jar'
 alias mvn-clean-install="mvn2 clean install -DskipTests=true -DwarProject.packaging=jar"
 alias mvn-clean-install-eclipse='mvn2 clean install  -DskipTests=true  eclipse:eclipse -DwarProject.packaging=jar -Dwtpversion=2.0 -DdownloadSources=true -DdownloadJavadocs=true'
 alias mvn-clean-compile-all='mvn2 clean test-compile'
-alias mvn-all="mvn-clean-install"
+alias mvn-all="mvn-clean-install -Pweb-releasex"
 alias mvn-test-fast="mvn2 test"
 alias ps-java='ps aux | grep java'
 
@@ -85,6 +85,13 @@ export PATH=$PATH:$M2
 
 # svn setup
 alias sd='svn diff --diff-cmd=/home/$USER/bin/svn-diff-meld'
+
+if [[ "$platform" == "linux" ]]; then
+  alias sd='svn diff --diff-cmd=/home/$USER/bin/svn-diff-meld'
+else
+  alias sd='svn diff --diff-cmd=/Applications/kdiff3.app/Contents/MacOS/kdiff3'
+fi
+
 
 # hadoop familiy setup
 export HADOOP_HOME=/home/$USER/bin/hadoop-0.20.2

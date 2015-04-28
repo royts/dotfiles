@@ -6,3 +6,6 @@ function gitIsDirty {
     return 0
   fi
 }
+function nameTerminalTab {
+  export PROMPT_COMMAND='echo -ne "\033]0;$1\007"'
+}
