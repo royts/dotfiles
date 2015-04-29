@@ -24,3 +24,9 @@ fi
 if [ -f ~/.bash_marks ]; then
   source ~/.bash_marks
 fi
+
+if [ -f ~/.bash_bindings ]; then
+  source ~/.bash_marks
+fi
+
+
