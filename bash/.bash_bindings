@@ -1,1 +1,8 @@
-bind '"\C-]":"\C-e\C-u pbcopy <<"EOF"\n\C-y\nEOF\n"'
+
+if [[ "$platform" == "linux" ]]; then
+  bind '"\C-]":"\C-e\C-u xclip <<"EOF"\n\C-y\nEOF\n"'
+else
+  bind '"\C-]":"\C-e\C-u pbcopy <<"EOF"\n\C-y\nEOF\n"'
+fi
+
+
