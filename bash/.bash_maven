@@ -23,20 +23,32 @@ export RESET_FORMATTING=`tput sgr0`
 # Wrapper function for Maven's mvn command.
 mvn-color()
 {
-  (
-  # Filter mvn output using sed. Before filtering set the locale to C, so invalid characters won't break some sed implementations
-  unset LANG
-  LC_CTYPE=C mvn $@ | sed -e "s/\(.* BUILD SUCCESS\)/${BOLD}${TEXT_GREEN}\1${RESET_FORMATTING}/g" \
-               -e "s/\(.* BUILD FAILURE\)/${BOLD}${TEXT_RED}\1${RESET_FORMATTING}/g" \
-               -e "s/\(.* Building .*\)/${BOLD}${TEXT_BLUE}\1${RESET_FORMATTING}/g" \
-               -e "s/\(\[WARNING\]\)\(.*\)/${BOLD}${TEXT_YELLOW}\1${RESET_FORMATTING}\2/g" \
-               -e "s/\(\[ERROR\]\)\(.*\)/${BOLD}${TEXT_RED}\1${RESET_FORMATTING}\2/g" \
-               -e "s/\(.* Total time:.*\)\(.*\)/${BOLD}${TEXT_CYAN}\1${RESET_FORMATTING}/g" \
-               -e "s/Tests run: \([^,]*\), Failures: \([^,]*\), Errors: \([^,]*\), Skipped: \([^,]*\)/${TEXT_GREEN}Tests run: \1${RESET_FORMATTING}, Failures: ${BOLD}${TEXT_RED}\2${RESET_FORMATTING}, Errors: ${BOLD}${TEXT_RED}\3${RESET_FORMATTING}, Skipped: ${BOLD}${TEXT_YELLOW}\4${RESET_FORMATTING}/g"
-
-  # Make sure formatting is reset
-  echo -ne ${RESET_FORMATTING}
-  )
+  mvn $* | sed \
+    -e "s/^\(.ERROR. .*\)$/$RED\1$NORMAL/		; #contain ERROR start 2nd char
+    s/^\(Tests run: .*<<< FAILURE\!\)/$RED\1$NORMAL/	; # contain Tests run: <something> <<< FAILURE
+    s/^\( \w*\\([\w\.]*\\).*: .*\)/$RED\1$NORMAL/	; # a name of method(name of class with package): error message
+    s/^\(Failed tests:.*\)/$RED\1$NORMAL/		; # contain Failed tests:
+    s/^\(|.*\)/$RED\1$NORMAL/			; # line start with pipe
+    s/^\(### Content of table.*\)/$RED\1$NORMAL/	; # line start ### Content of table (dbunit)
+    s/^\(Caused by*.*\)/$RED\1$NORMAL/		; # line start Caused by
+    s/^\(\tat .*\)/$RED\1$NORMAL/			; # line start at ... (stack trace)
+    s/^\(\t*.*more.*\)/$RED\1$NORMAL/		; # line start with tab and contain something with more (stack trace)
+    s/^\(##*.*\)/$RED\1$NORMAL/			; # line start more than 1 #
+    s/^\(Running.*\)/$BLUE\1$NORMAL/		; # Line start with Running (surefire)
+    s/^\(Tests run: .*[^FAILURE].*\)/${YELLOW}\1${NORMAL}/ ;  # test not failed
+    s/^\(.INFO. BUILD FAILURE.*\)$/$RED\1$NORMAL/	; # BUILD FAILURE
+    s/^\(.INFO. ----.*\)$/$PURPLE\1$NORMAL/		; # INFO of module block
+    s/^\(.INFO. Building.*SNAPSHOT\)$/$PURPLE\1$NORMAL/; # INFO of module block (with version)
+    s/^\(.INFO. --- .* ---.*\)$/$PURPLE\1$NORMAL/	; # info of plugin
+    s/^\(.INFO. .*\)$/$GREEN\1$NORMAL/		; # other info
+    s/^\(.WARNING. .*\)$/$BLUE\1$NORMAL/		; # warning
+    s/^\(\w*\.\w*\) \(r [0-9]* w 0 e 0 .* seconds.*\)$/$BLUE\1$NORMAL $YELLOW\2$NORMAL/;
+    s/^\(\w*\.\w*\) \(r [0-9]* w [1-9] e 0 .* seconds.*\)$/$RED\1 \2$NORMAL/;
+    s/^\(\w*\.\w*\) \(r [0-9]* w [1-9] e [1-9] .* seconds.*\)$/$RED\1 \2$NORMAL/;
+    s/^\(\w*\.\w*\) \(r [0-9]* w 0 e [1-9] .* seconds.*\)$/$RED\1 \2$NORMAL/;
+              # Fitnesse execute test;
+    s/^\([^\[].*\)/${YELLOW}\1${NORMAL}/ ; 		# line doesn't start with [
+    "
 }
 
-alias mvn='mvn-color'
+#alias mvn='mvn-color'

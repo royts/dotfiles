@@ -39,7 +39,6 @@ alias mvn-install='mvn install -DskipTests=true -DwarProject.packaging=jar'
 alias mvn-clean-install-eclipse='mvn clean install  -DskipTests=true  eclipse:eclipse -DwarProject.packaging=jar -Dwtpversion=2.0 -DdownloadSources=true -DdownloadJavadocs=true'
 alias mvn-clean-compile-all='mvn clean test-compile'
 alias mvn-test-fast="mvn test"
-alias mvn-clean-install="mvn clean install -DskipTests=true -DwarProject.packaging=jar"
 function mvn-make {
   mvn reactor:make -Dmake.artifacts=$1 -Dmake.goals=install,-DskipTests -DwarProject.packaging=jar
 }
@@ -51,3 +50,20 @@ function mvn-make-dependents {
 function mvn-make-all-related {
   mvn reactor:make reactor:make-dependents -Dmake.artifacts=$1 -Dmake.goals=install,-DskipTests -DwarProject.packaging=jar
 }
+
+
+
+(
+# Filter mvn output using sed. Before filtering set the locale to C, so invalid characters won't break some sed implementations
+unset LANG
+LC_CTYPE=C mvn $@ | sed -e "s/\(.* BUILD SUCCESS\)/${BOLD}${TEXT_GREEN}\1${RESET_FORMATTING}/g" \
+             -e "s/\(.* BUILD FAILURE\)/${BOLD}${TEXT_RED}\1${RESET_FORMATTING}/g" \
+             -e "s/\(.* Building .*\)/${BOLD}${TEXT_BLUE}\1${RESET_FORMATTING}/g" \
+             -e "s/\(\[WARNING\]\)\(.*\)/${BOLD}${TEXT_YELLOW}\1${RESET_FORMATTING}\2/g" \
+             -e "s/\(\[ERROR\]\)\(.*\)/${BOLD}${TEXT_RED}\1${RESET_FORMATTING}\2/g" \
+             -e "s/\(.* Total time:.*\)\(.*\)/${BOLD}${TEXT_CYAN}\1${RESET_FORMATTING}/g" \
+             -e "s/Tests run: \([^,]*\), Failures: \([^,]*\), Errors: \([^,]*\), Skipped: \([^,]*\)/${TEXT_GREEN}Tests run: \1${RESET_FORMATTING}, Failures: ${BOLD}${TEXT_RED}\2${RESET_FORMATTING}, Errors: ${BOLD}${TEXT_RED}\3${RESET_FORMATTING}, Skipped: ${BOLD}${TEXT_YELLOW}\4${RESET_FORMATTING}/g"
+
+# Make sure formatting is reset
+echo -ne ${RESET_FORMATTING}
+)
