@@ -6,13 +6,13 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 files=(
-"/Users/rtsabari/.bashrc"
-"/Users/rtsabari/.bash_ob"
-"/Users/rtsabari/.bash_function"
-"/Users/rtsabari/.bash_alias"
-"/Users/rtsabari/.bash_bindings"
-"/Users/rtsabari/.bash_maven"
-"/Users/rtsabari/.local/bin/bashmarks.sh"
+$HOME"/.bashrc"
+$HOME"/.bash_ob"
+$HOME"/.bash_function"
+$HOME"/.bash_alias"
+$HOME"/.bash_bindings"
+$HOME"/.bash_maven"
+$HOME"/.local/bin/bashmarks.sh"
 )
 
 
