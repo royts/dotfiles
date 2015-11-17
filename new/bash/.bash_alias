@@ -1,4 +1,6 @@
 
+alis vim=/usr/local/Cellar/vim/7.4.712/bin/vim
+
 alias webServerHere='python -m SimpleHTTPServer 8000'
 
 alias grep='grep --color'

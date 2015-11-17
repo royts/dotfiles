@@ -16,16 +16,6 @@ function testBeforeCommit() {
 # environment for unit tests
 export com_outbrain_environment=junit
 
-# Maven Stuff
-export USER_HOME=/Users/rtsabari/
-export M2_VERSION=3.0.5
-export M2_HOME=$USER_HOME/bin/apache-maven-$M2_VERSION
-export M2=$M2_HOME/bin
-export M2_REPO=~/.m2/
-export MAVEN_OPTS='-Xmx1024m -Xms256m -XX:MaxPermSize=384m'
-export PATH=$PATH:$M2
-alias mvn-all="mvn clean install -DskipTests=true -DwarProject.packaging=jar -Pweb-releasex"
-
 
 if [[ "$platform" == "linux" ]]; then
   alias sd='svn diff --diff-cmd=/home/$USER/bin/svn-diff-meld'

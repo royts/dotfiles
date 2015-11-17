@@ -4,7 +4,7 @@ alias webServerHere='python -m SimpleHTTPServer 8000'
 alias grep='grep --color'
 
 # long format listing
- alias ll="ls -l"
+ alias ll="ls -lahS"
 
 # list only directories
 alias lsd='ls -d */'
