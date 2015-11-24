@@ -1,0 +1,6 @@
+Bundle 'sjl/vitality.vim'
+Bundle 'maksimr/vim-jsbeautify'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'szw/vim-ctrlspace'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'severin-lemaignan/vim-minimap'
