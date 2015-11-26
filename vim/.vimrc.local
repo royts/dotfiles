@@ -58,7 +58,8 @@ set nospell
  cnoremap <C-S-Tab> <C-C>:tabprevious<CR>"
 
 
-
+" auto reload changes
+:set autoread
 
 
 " NERDTress File highlighting
@@ -86,7 +87,10 @@ let g:nerdtree_tabs_open_on_console_startup=1
 
 " Everything you yank in vim will go to the unnamed register, and vice versa.
 
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 " view the current buffer in NERDTree
 map <leader>r :NERDTreeFind<cr>
+
+" nerdtree reveal
+nmap ,n :NERDTreeFind<CR>
