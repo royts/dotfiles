@@ -41,3 +41,8 @@ function tab () {
         end tell
 EOF
 }
+
+
+function kill_by_name () {
+ ps -ax | grep $1 | awk '{print $1}' | xargs kill -9
+}
