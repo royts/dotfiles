@@ -1,0 +1,25 @@
+gvaot:
+  title: "gvaot"
+  paths: [
+    "/Users/rtsabari/dev/gvaot"
+  ]
+outbrain:
+  title: "outbrain"
+  paths: [
+    "/Users/rtsabari/dev/outbrain/trunk"
+  ]
+"www ":
+  title: "www"
+  paths: [
+    "/Users/rtsabari/dev/outbrain/trunk/www"
+  ]
+"amplifyApp ":
+  title: "amplifyApp"
+  paths: [
+    "/Users/rtsabari/dev/outbrain/trunk/amplifyApp"
+  ]
+planto:
+  title: "planto"
+  paths: [
+    "/Users/rtsabari/dev/planto"
+  ]

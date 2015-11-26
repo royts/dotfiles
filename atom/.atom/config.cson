@@ -1,0 +1,68 @@
+"*":
+  "exception-reporting":
+    userId: "2e21d9bb-69b7-0c0c-0206-71a2fcf21560"
+  welcome:
+    showOnStartup: false
+  "remember-session":
+    x: 0
+    y: 23
+    width: 1440
+    height: 873
+    path: ""
+    tabs: ""
+    selectedTab: ""
+  core:
+    disabledPackages: [
+      "autocomplete-paths"
+      "tab-history"
+      "open-last-project"
+      "fonts"
+    ]
+    themes: [
+      "monokai-tweaked-ui"
+      "monokai-syntax-for-one-dark"
+    ]
+    ignoredNames: [
+      ".svn"
+      "target"
+      ".idea"
+      ".git"
+    ]
+  autosave:
+    enabled: true
+  "autoclose-html": {}
+  editor:
+    invisibles: {}
+    zoomFontWhenCtrlScrolling: true
+    scrollPastEnd: true
+    fontSize: 16
+  "autocomplete-plus": {}
+  "filetype-color":
+    enabled: "false"
+  "auto-update-packages": {}
+  "atom-beautify":
+    _analyticsUserId: "9742ce39-8084-4a50-907e-f3fd4eff77a6"
+  "merge-conflicts": {}
+  "highlight-selected":
+    highlightBackground: true
+    hideHighlightOnSelectedWord: true
+  term2:
+    autoRunCommand: "login -f whoami"
+  "highlight-line": {}
+  minimap: {}
+  "vim-mode":
+    useClipboardAsDefaultRegister: true
+  fonts: {}
+  "atom-typescript":
+    showSemanticView: true
+  "atom-material-ui":
+    ui:
+      disableAnimations: true
+    tabs:
+      showTabIcons: "Show on all tabs"
+      tabSize: "Big"
+    fonts: {}
+    treeView:
+      compactTreeView: true
+    panels:
+      panelContrast: true
