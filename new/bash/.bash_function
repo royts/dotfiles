@@ -1,8 +1,0 @@
-function gitIsDirty {
-  if [$(git diff --shortstat 2> /dev/null | tail -n1) != "" ]
-    then
-      return 1
-  else
-    return 0
-  fi
-}
