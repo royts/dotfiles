@@ -21,3 +21,6 @@ export HISTFILESIZE=20000        # increase history file size (default is 500)
 export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
 # if this is interactive shell, then bind hh to Ctrl-r (for Vi mode check doc)
 if [[ $- =~ .*i.*  ]]; then bind '"\C-r": "\C-a hh \C-j"'; fi
+
+export NVM_DIR="/Users/roy-work/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
