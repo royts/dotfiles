@@ -1,0 +1,6 @@
+Bundle 'sjl/vitality.vimg'
+Bundle 'nvie/vim-flake8' 
+UnBundle 'Shougo/neocomplete.vim'
+Bundle 'hdima/python-syntax'
+UnBundle 'nathanaelkane/vim-indent-guides'
+Bundle 'Chiel92/vim-autoformat'
