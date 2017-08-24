@@ -1,4 +1,3 @@
-set number
 " Vundle start
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -9,24 +8,16 @@ call vundle#begin()
 
 
 " kavascript plugins - http://oli.me.uk/2013/06/29/equipping-vim-for-javascript/
-"Plugin 'jelera/vim-javascript-syntax'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
-Plugin 'crusoexia/vim-javascript-lib'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'rking/ag.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'crusoexia/vim-monokai'
-Plugin 'w0rp/ale'
-Bundle 'ruanyl/vim-fixmyjs'
 
 
 " All of your Plugins must be added before the following line
@@ -42,9 +33,8 @@ filetype plugin indent on    " required
 " colors
 set t_Co=256
 syntax on
-"set background=dark
-"colorscheme distinguished
-colorscheme monokai
+set background=dark
+colorscheme distinguished
 
 " make backspace work like most other apps
 set backspace=indent,eol,start
@@ -60,50 +50,30 @@ set completeopt-=previewkkk
 " ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\',
-    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
 " syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_json_checkers = ['eslint']
-let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+
 
 " nerdtree
  map <C-e> :NERDTreeToggle<CR>
  map <leader>r :NERDTreeFind<cr>
  autocmd BufEnter * lcd %:p:h
 
-" autoformat
-"noremap <F3> :Autoformat<CR>
-noremap <F3> :Fixmyjs<CR>
 
-" vim-airline
-set laststatus=2
-
- "disable help key F1
+ " disable help key F1
  :nmap <F1> :echo<CR>
  :imap <F1> <C-o>:echo<CR>
 
- " check spelling
- set spell spelllang=en_us
- 
- " Split to right by default
- set splitright
-
-" Allow background buffers without saving
- set hidden 
-
-" mappings
-:imap jj <Esc>
-:imap ^^ :lclose
-nnoremap te  :tabedit<Space>
+ " autformat
+ let g:formatdef_jsbeautify_javascript = '"js-beautify --config /Users/roy-work/.jsbeautifyrc"'
