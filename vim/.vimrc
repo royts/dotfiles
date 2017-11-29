@@ -7,20 +7,24 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-"Plugin 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 "Plugin 'crusoexia/vim-javascript-lib'
-"Plugin 'Raimondi/delimitMate'
+"Plugin 'mxw/vim-jsx'
+Plugin 'Raimondi/delimitMate'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
+Plugin 'leshill/vim-json'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-"Plugin 'editorconfig/editorconfig-vim'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'crusoexia/vim-monokai'
-"Plugin 'ruanyl/vim-fixmyjs'
+Plugin 'ruanyl/vim-fixmyjs'
 Plugin 'w0rp/ale'
+set rtp+=/usr/local/opt/fzf
+Plugin 'junegunn/fzf.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -31,7 +35,30 @@ filetype plugin indent on    " required
 
 " to install plugins -  Launch vim and run :PluginInstall
 " Vundle end
-let g:ale_fixers = {'javascript': ['eslint']}
+noremap <F3> :ALEFix<CR>
+let g:ale_sign_column_always = 1
+let g:ale_echo_msg_format = '[%linter%] %s'
+let g:ale_sign_error = 'E>'
+let g:ale_sign_warning = 'W>'
+highlight ALEWarning ctermbg=DarkMagenta
+highlight ALEError ctermbg=DarkMagenta
+" let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'python': ['autopep8']
+\}
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'python': ['flake8']
+\}
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+map <C-p> :GFiles<CR>
+map <C-z> :Buffers<CR>
+map <C-s> :Ag·
+
 
 " colors
 set t_Co=256
@@ -48,12 +75,12 @@ let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
 
 " ctrlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP'
 "let g:ctrlp_custom_ignore = {
     "\ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\',
     "\ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'git --git-dir=~/.git ls-files -oc --exclude-standard']
+"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard', 'git --git-dir=~/.git ls-files -oc --exclude-standard']
 
 " syntastic
 "let g:syntastic_always_populate_loc_list = 1
@@ -74,7 +101,6 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
  autocmd BufEnter * lcd %:p:h
 
 " autoformat
-"noremap <F3> :Autoformat<CR>
 "noremap <F3> :Fixmyjs<CR>
 
 " vim-airline
@@ -112,3 +138,7 @@ nmap clog yiwocll<Esc>p
 " /Copyright      " Case sensitive
 " /copyright\C    " Case sensitive
 " /Copyright\c    " Case insensitive
+
+" cursor shape change between modes
+let &t_SI="\033[4 q" " start insert mode
+let &t_EI="\033[1 q" " end insert mode
