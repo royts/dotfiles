@@ -23,6 +23,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'ruanyl/vim-fixmyjs'
 Plugin 'w0rp/ale'
+Plugin 'tpope/vim-surround'
 set rtp+=/usr/local/opt/fzf
 Plugin 'junegunn/fzf.vim'
 
@@ -46,17 +47,18 @@ highlight ALEError ctermbg=DarkMagenta
 let g:ale_completion_enabled = 1
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
+\   'json': ['prettier'],
 \   'python': ['autopep8']
 \}
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'json': ['prettier'],
 \   'python': ['flake8']
 \}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 map <C-p> :GFiles<CR>
-map <C-z> :Buffers<CR>
 map <C-s> :Ag·
 
 
@@ -142,3 +144,8 @@ nmap clog yiwocll<Esc>p
 " cursor shape change between modes
 let &t_SI="\033[4 q" " start insert mode
 let &t_EI="\033[1 q" " end insert mode
+
+" highlight searches
+:set hlsearch
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
