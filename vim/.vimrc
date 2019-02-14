@@ -11,9 +11,9 @@ Plugin 'pangloss/vim-javascript'
 "Plugin 'crusoexia/vim-javascript-lib'
 "Plugin 'mxw/vim-jsx'
 Plugin 'Raimondi/delimitMate'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'kien/ctrlp.vim'
-Plugin 'leshill/vim-json'
+Plugin 'elzr/vim-json'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -21,11 +21,14 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'crusoexia/vim-monokai'
-Plugin 'ruanyl/vim-fixmyjs'
+"Plugin 'ruanyl/vim-fixmyjs'
 Plugin 'w0rp/ale'
 Plugin 'tpope/vim-surround'
 set rtp+=/usr/local/opt/fzf
 Plugin 'junegunn/fzf.vim'
+Plugin 'moll/vim-node'
+Plugin 'mxw/vim-jsx'
+"Plugin 'chrisbra/csv.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -45,23 +48,28 @@ highlight ALEWarning ctermbg=DarkMagenta
 highlight ALEError ctermbg=DarkMagenta
 " let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
+let g:ale_linter_aliases = {'mjs': ['javascript']}
+" \   'python': ['autopep8'],
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['prettier'],
-\   'python': ['autopep8']
+\   'html': ['prettier']
 \}
+" \   'python': ['flake8'],
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'json': ['prettier'],
-\   'python': ['flake8']
+\   'mjs': ['eslint']
 \}
+au BufNewFile,BufRead *.mjs             set filetype=javascript
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 map <C-p> :GFiles<CR>
 map <C-s> :Ag·
 
-
+"let g:ycm_server_python_interpreter = '/Users/roy-work/opt/python'
+"let g:ycm_python_binary_path = '/Users/roy-work/opt/python'
 " colors
 set t_Co=256
 syntax on
@@ -147,5 +155,8 @@ let &t_EI="\033[1 q" " end insert mode
 
 " highlight searches
 :set hlsearch
+:highlight Search ctermbg=black ctermfg=yellow term=underline
+
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+set expandtab

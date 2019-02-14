@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/roy-work'
+let g:netrw_dirhist_2='/Users/roy-work/dev/forter/crons_dsl/jobs/billing2'
+let g:netrw_dirhist_3='/Users/roy-work/dev/forter/crons_dsl/jobs'
+let g:netrw_dirhist_4='/Users/roy-work/dev/forter/crons_dsl/jobs/billing2'
+let g:netrw_dirhist_5='/Users/roy-work/dev/forter/billing2'
+let g:netrw_dirhist_6='/Users/roy-work/dev/forter/billing2/billing'
+let g:netrw_dirhist_7='/Users/roy-work/dev/forter/billing2'
+let g:netrw_dirhist_8='/Users/roy-work/dev/forter/billing2/billing'
+let g:netrw_dirhist_9='/Users/roy-work/dev/forter/billing2/billing/calculate_decision'
