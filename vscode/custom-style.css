@@ -1,0 +1,8 @@
+/**
+ * STATUS-BAR | hide a few items
+ */
+.monaco-workbench .editor-status-indentation,
+.monaco-workbench .editor-status-encoding,
+.monaco-workbench .editor-status-eol {
+  display: none !important;
+}

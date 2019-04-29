@@ -11,7 +11,7 @@ Plugin 'pangloss/vim-javascript'
 "Plugin 'crusoexia/vim-javascript-lib'
 "Plugin 'mxw/vim-jsx'
 Plugin 'Raimondi/delimitMate'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 "Plugin 'kien/ctrlp.vim'
 Plugin 'elzr/vim-json'
 Plugin 'scrooloose/nerdcommenter'
@@ -28,6 +28,7 @@ set rtp+=/usr/local/opt/fzf
 Plugin 'junegunn/fzf.vim'
 Plugin 'moll/vim-node'
 Plugin 'mxw/vim-jsx'
+Plugin 'mileszs/ack.vim'
 "Plugin 'chrisbra/csv.vim'
 
 
@@ -39,6 +40,11 @@ filetype plugin indent on    " required
 
 " to install plugins -  Launch vim and run :PluginInstall
 " Vundle end
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 noremap <F3> :ALEFix<CR>
 let g:ale_sign_column_always = 1
 let g:ale_echo_msg_format = '[%linter%] %s'
@@ -48,17 +54,17 @@ highlight ALEWarning ctermbg=DarkMagenta
 highlight ALEError ctermbg=DarkMagenta
 " let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
-let g:ale_linter_aliases = {'mjs': ['javascript']}
-" \   'python': ['autopep8'],
+let g:ale_linter_aliases = {'mjs': ['javascript'],'js': ['javascript']}
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['prettier'],
+\   'python': ['autopep8'],
 \   'html': ['prettier']
 \}
-" \   'python': ['flake8'],
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'json': ['prettier'],
+\   'python': ['flake8'],
 \   'mjs': ['eslint']
 \}
 au BufNewFile,BufRead *.mjs             set filetype=javascript
@@ -68,8 +74,8 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 map <C-p> :GFiles<CR>
 map <C-s> :Ag·
 
-"let g:ycm_server_python_interpreter = '/Users/roy-work/opt/python'
-"let g:ycm_python_binary_path = '/Users/roy-work/opt/python'
+let g:ycm_server_python_interpreter = '/Users/roy-work/opt/python'
+let g:ycm_python_binary_path = '/Users/roy-work/opt/python'
 " colors
 set t_Co=256
 syntax on
