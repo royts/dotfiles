@@ -84,4 +84,3 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export NVM_DIR="/Users/roy-work/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-export HOMEBREW_GITHUB_API_TOKEN=f8a8c35643cdd58a9bffcc9441740b2f2c7f39e7
