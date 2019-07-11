@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/roy-work/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="royts"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -58,6 +58,8 @@ plugins=(git zshmarks)
 #export PYTHONPATH="$HOME/opt/python"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/opt:$PATH"
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -84,8 +86,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export NVM_DIR="/Users/roy-work/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export HOMEBREW_GITHUB_API_TOKEN=f8a8c35643cdd58a9bffcc9441740b2f2c7f39e7
 
 git-remove-merged-branches(){
@@ -158,12 +158,9 @@ real_path(){
 kill_by_name () {
  ps -ax | grep $1 | awk '{print $1}' | xargs kill -9
 }
-alias vim-spf13-update-plugins='vim +BundleInstall! +BundleClean +q'
 
-# https://github.com/rupa/z
-. $HOME/dev/z/z.sh
-export PATH="$HOME/opt:$PATH"
-export PATH="$HOME/opt/forter-dev-tools:$PATH" # Forter dev-tools
+. $HOME/.oh-my-zsh/plugins/z/z.sh
+export PATH="$HOME/bin:$PATH"
 
 alias webServerHere='python -m SimpleHTTPServer 8000'
 # ln -s /usr/local/bin/ipython ipython
