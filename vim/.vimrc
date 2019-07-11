@@ -1,5 +1,6 @@
 set number
-" Vundle start
+
+"""""""""""""""""" Vubdle start
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -37,9 +38,16 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-
-" to install plugins -  Launch vim and run :PluginInstall
-" Vundle end
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+"
+" see :h vundle for more details or wiki for FAQ
+"""""""""""""""""""""" Vundle end
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
