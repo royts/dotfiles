@@ -1,0 +1,125 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "F3",
+        "command": "eslint.executeAutofix"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "extension.vim_ctrl+n",
+        "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "-extension.vim_ctrl+n",
+        "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "extension.vim_ctrl+p",
+        "when": "suggestWidgetVisible && vim.active && vim.use<C-p>"
+    },
+    // {
+    //     "key": "ctrl+p",
+    //     "command": "-extension.vim_ctrl+p",
+    //     "when": "suggestWidgetVisible && vim.active && vim.use<C-p>"
+    // },
+    // {
+    //     "key": "m d",
+    //     "command": "deleteFile",
+    //     "when": "explorerViewletVisible && filesExplorerFocus"
+    // },
+    // {
+    //     "key": "alt+cmd+backspace",
+    //     "command": "-deleteFile",
+    //     "when": "explorerViewletVisible && filesExplorerFocus"
+    // },
+    // {
+    //     "key": "m m",
+    //     "command": "renameFile",
+    //     "when": "explorerViewletVisible && filesExplorerFocus"
+    // },
+    // {
+    //     "key": "enter",
+    //     "command": "-renameFile",
+    //     "when": "explorerViewletVisible && filesExplorerFocus"
+    // },
+    // {
+    //     "key": "s",
+    //     "command": "explorer.openToSide",
+    //     "when": "explorerViewletFocus && explorerViewletVisible"
+    // },
+    {
+        "key": "ctrl+enter",
+        "command": "-explorer.openToSide",
+        "when": "explorerViewletFocus && explorerViewletVisible"
+    },
+    // {
+    //     "key": "m a",
+    //     "command": "explorer.newFile",
+    //     "when": "explorerViewletFocus && explorerViewletVisible"
+    // },
+    // {
+    //     "key": "m f",
+    //     "command": "explorer.newFolder",
+    //     "when": "explorerViewletFocus && explorerViewletVisible"
+    // },
+    {
+        "key": "shift+cmd+j",
+        "command": "editor.action.marker.next",
+        "when": "editorFocus && !editorReadonly"
+    },
+    {
+        "key": "f8",
+        "command": "-editor.action.marker.next",
+        "when": "editorFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "editor.action.marker.prev",
+        "when": "editorFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+f8",
+        "command": "-editor.action.marker.prev",
+        "when": "editorFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "workbench.action.showErrorsWarnings"
+    },
+    {
+        "key": "ctrl+cmd+t",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-workbench.view.explorer"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "cmd+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "editor.action.marker.next",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+f8",
+        "command": "-editor.action.marker.next",
+        "when": "editorTextFocus && !editorReadonly"
+    }
+]
