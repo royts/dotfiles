@@ -82,8 +82,6 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 map <C-p> :GFiles<CR>
 map <C-s> :Ag·
 
-let g:ycm_server_python_interpreter = '/Users/roy-work/opt/python'
-let g:ycm_python_binary_path = '/Users/roy-work/opt/python'
 " colors
 set t_Co=256
 syntax on

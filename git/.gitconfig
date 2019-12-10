@@ -3,7 +3,7 @@
 
 [user]
 	name = Roy Tsabari
-	email = a300600@gmail.com
+	email = roy.tsabari@forter.com
 
 [color]
   diff = auto
@@ -79,15 +79,16 @@
   wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
   bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
   bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+	setDevTools = true
 
 [diff]
-  tool = diffmerge
+	tool = vscode
 
 [difftool "diffmerge"]
   cmd = "diffmerge" "$LOCAL" "$REMOTE"
 
 [merge]
-  tool = diffmerge
+	tool = vscode
 
 [mergetool "diffmerge"]
   cmd = "diffmerge" -3 -merge -wait "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
@@ -107,3 +108,7 @@
 #	smtpencryption = tls
 #	smtpuser = a300600@gmail.com
 #
+[mergetool "vscode"]
+	cmd = "code --wait "
+[difftool "vscode"]
+	cmd = "code --wait --diff  "

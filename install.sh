@@ -12,3 +12,17 @@ vim +PluginInstall +qall
 ln -s /usr/local/bin/pip $HOME/opt/pip
 ln -s /usr/local/bin/python2 $HOME/opt/python
 ln -s /usr/local/bin/python3 $HOME/opt/python3
+ln -s $HOME/dotfiles/vscode/keybindings.json /Library/Application\ Support/Code/User/keybindings.json
+pip install tabview
+
+# npm global in PATH
+mkdir $HOME/.npm-global
+npm config set prefix `$HOME/.npm-global`
+
+# electron apps
+mkdir $HOME/.eapps
+nativefier https://mail.google.com/mail --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "Gmail a300600"  --internal-urls ".*accounts.google.com.*" $HOME/.eapps
+nativefier https://mail.google.com/mail --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "Gmail Forter"  --internal-urls ".*accounts.google.com|mail.google.com.*" $HOME/.eapps
+nativefier https://calendar.google.com/calendar/r --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "Google Calendar"  --internal-urls ".*accounts.google.com.*" $HOME/.eapps
+ nativefier  --name "Whatsapp" https://web.whatsapp.com/
+ nativefier  --name "Asana" https://app.asana.com/

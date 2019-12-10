@@ -49,7 +49,6 @@ export ZSH_THEME="royts"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zshmarks)
 
 # User configuration
 
@@ -57,9 +56,13 @@ plugins=(git zshmarks)
 #export PATH="/usr/local/bin:$PATH" #for custom python version
 #export PYTHONPATH="$HOME/opt/python"
 # export MANPATH="/usr/local/man:$MANPATH"
-
+plugins=(
+  git
+  osx
+)
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/opt:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -105,13 +108,10 @@ ssh-prod () {
   ssh ubuntu@$1 -i ~/.ssh/prod1.pem
 }
 ssh-own-user () {
-  ssh roy.tsabari@$1 -i ~/.ssh/id_rsa
+  ssh roy.tsabari@$1 -i ~/.ssh/forter_id
 }
 ssh-dev () {
   ssh ubuntu@$1 -i ~/.ssh/u2_ssh.pem
-}
-ssh-docker () {
-  ssh roy.tsabari@$1 -i ~/.ssh/id_rsa
 }
 
 gciamp () {
@@ -159,6 +159,10 @@ kill_by_name () {
  ps -ax | grep $1 | awk '{print $1}' | xargs kill -9
 }
 
+csv () {
+    tabview $1
+}
+
 . $HOME/.oh-my-zsh/plugins/z/z.sh
 export PATH="$HOME/bin:$PATH"
 
@@ -196,3 +200,25 @@ fi
 # alias vim=nvim
 alias vim-clean-pyc='find . -name "*.pyc" -exec rm {} \;'
 alias notify= '| tee terminal-notifier'
+#set -o vi
+export EDITOR=vim
+#bindkey -v
+#bindkey '^R' history-incremental-search-backward
+
+ ## Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+ #vi mode
+#bindkey -v
+#export KEYTIMEOUT=1
+
+ #Use vim keys in tab complete menu:
+#bindkey -M menuselect 'h' vi-backward-char
+#bindkey -M menuselect 'k' vi-up-line-or-history
+#bindkey -M menuselect 'l' vi-forward-char
+#bindkey -M menuselect 'j' vi-down-line-or-history
+#bindkey -v '^?' backward-delete-char
+alias port-listeners-list='lsof -iTCP -sTCP:LISTEN -P -n'
+
+
