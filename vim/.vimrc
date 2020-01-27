@@ -1,4 +1,4 @@
-set number
+set relativenumber
 
 """""""""""""""""" Vubdle start
 set nocompatible              " be iMproved, required

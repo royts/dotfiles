@@ -24,5 +24,6 @@ mkdir $HOME/.eapps
 nativefier https://mail.google.com/mail --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "Gmail a300600"  --internal-urls ".*accounts.google.com.*" $HOME/.eapps
 nativefier https://mail.google.com/mail --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "Gmail Forter"  --internal-urls ".*accounts.google.com|mail.google.com.*" $HOME/.eapps
 nativefier https://calendar.google.com/calendar/r --user-agent 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' --name "Google Calendar"  --internal-urls ".*accounts.google.com.*" $HOME/.eapps
- nativefier  --name "Whatsapp" https://web.whatsapp.com/
- nativefier  --name "Asana" https://app.asana.com/
+nativefier  --name "Whatsapp" https://web.whatsapp.com/ $HOME/.eapps
+nativefier  --name "Asana" https://app.asana.com/ $HOME/.eapps
+brew install tldr
