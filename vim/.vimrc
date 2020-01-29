@@ -30,6 +30,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'moll/vim-node'
 Plugin 'mxw/vim-jsx'
 Plugin 'mileszs/ack.vim'
+Plugin 'dhruvasagar/vim-table-mode'
 "Plugin 'chrisbra/csv.vim'
 
 
