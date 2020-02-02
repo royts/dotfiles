@@ -28,3 +28,7 @@ nativefier https://calendar.google.com/calendar/r --user-agent 'Mozilla/5.0 (X11
 nativefier  --name "Whatsapp" https://web.whatsapp.com/ $HOME/.eapps
 nativefier  --name "Asana" https://app.asana.com/ $HOME/.eapps
 nativefier --name "Zendesk" https://forter.zendesk.com/ --internal-urls "https://forter.okta.com/app/zendesk/.*" $HOME/Applications brew install tldr
+
+
+# cursor speed
+defaults write NSGlobalDomain KeyRepeat -int 2
