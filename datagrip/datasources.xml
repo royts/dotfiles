@@ -1,37 +1,95 @@
-#DataSourceSettings#
-#LocalDataSource: analytics@rs.frdstr.com
-#BEGIN#
-<data-source source="LOCAL" name="analytics@rs.frdstr.com" uuid="9fbaebf2-d7b4-44cb-ba8c-d4b526812851"><database-info product="PostgreSQL" version="08.00.0002" jdbc-version="4.2" driver-name="RedshiftJDBC" driver-version="01.02.16.1027" dbms="REDSHIFT" exact-version="1.0.12451" exact-driver-version="1.2"><identifier-quote-string>&quot;</identifier-quote-string></database-info><driver-ref>redshift</driver-ref><synchronize>true</synchronize><jdbc-driver>com.amazon.redshift.jdbc.Driver</jdbc-driver><jdbc-url>jdbc:redshift://rs.frdstr.com:5439/analytics?ssl=true&amp;sslfactory=com.amazon.redshift.ssl.NonValidatingFactory</jdbc-url><secret-storage>master_key</secret-storage><user-name>roytsabari</user-name><introspection-schemas>@:@</introspection-schemas></data-source>
-#END#
-
-#LocalDataSource: dev-db
-#BEGIN#
-<data-source source="LOCAL" name="dev-db" uuid="78da9b6d-046e-4894-a599-eab030d35667"><database-info product="MySQL" version="5.7.21-log" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.7.21" exact-driver-version="8.0"><extra-name-characters>#@</extra-name-characters><identifier-quote-string>`</identifier-quote-string></database-info><case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/><driver-ref>mysql.8</driver-ref><synchronize>true</synchronize><jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver><jdbc-url>jdbc:mysql://develop-db.frdstr.com:3306/innodb</jdbc-url><secret-storage>master_key</secret-storage><user-name>ryzyco</user-name><introspection-schemas>*:innodb</introspection-schemas><driver-properties><property name="autoReconnect" value="true"/><property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL"/><property name="tinyInt1isBit" value="false"/><property name="characterEncoding" value="utf8"/><property name="characterSetResults" value="utf8"/><property name="yearIsDateType" value="false"/></driver-properties></data-source>
-#END#
-
-#LocalDataSource: prod-billing-dba
-#BEGIN#
-<data-source source="LOCAL" name="prod-billing-dba" uuid="0f4c2de3-c2a7-4aac-b0a3-83b291889b23"><database-info product="MySQL" version="5.7.23-log" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.7.23" exact-driver-version="8.0"><extra-name-characters>#@</extra-name-characters><identifier-quote-string>`</identifier-quote-string></database-info><case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/><driver-ref>mysql.8</driver-ref><synchronize>true</synchronize><jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver><jdbc-url>jdbc:mysql://prod-billing-db.frdstr.com:3306/innodb</jdbc-url><secret-storage>master_key</secret-storage><user-name>dba</user-name><introspection-schemas>*:innodb</introspection-schemas><driver-properties><property name="autoReconnect" value="true"/><property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL"/><property name="tinyInt1isBit" value="false"/><property name="characterEncoding" value="utf8"/><property name="characterSetResults" value="utf8"/><property name="yearIsDateType" value="false"/></driver-properties></data-source>
-#END#
-
-#LocalDataSource: prod-db-dba
-#BEGIN#
-<data-source source="LOCAL" name="prod-db-dba" uuid="70e946c9-8647-4347-a0fd-6863107dbba5"><database-info product="MySQL" version="5.7.23-log" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.7.23" exact-driver-version="8.0"><extra-name-characters>#@</extra-name-characters><identifier-quote-string>`</identifier-quote-string></database-info><case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/><driver-ref>mysql.8</driver-ref><synchronize>true</synchronize><jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver><jdbc-url>jdbc:mysql://prod-db.frdstr.com:3306/innodb</jdbc-url><secret-storage>master_key</secret-storage><user-name>dba</user-name><introspection-schemas>*:innodb</introspection-schemas><driver-properties><property name="autoReconnect" value="true"/><property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL"/><property name="tinyInt1isBit" value="false"/><property name="characterEncoding" value="utf8"/><property name="characterSetResults" value="utf8"/><property name="yearIsDateType" value="false"/></driver-properties></data-source>
-#END#
-
-#LocalDataSource: prod-db-replica
-#BEGIN#
-<data-source source="LOCAL" name="prod-db-replica" uuid="1a0986d0-0c9d-4576-a1bf-60bab1f830f8"><database-info product="MySQL" version="5.7.23-log" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.7.23" exact-driver-version="8.0"><extra-name-characters>#@</extra-name-characters><identifier-quote-string>`</identifier-quote-string></database-info><case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/><driver-ref>mysql.8</driver-ref><synchronize>true</synchronize><jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver><jdbc-url>jdbc:mysql://prod-db-replica.frdstr.com:3306/innodb</jdbc-url><secret-storage>master_key</secret-storage><user-name>human</user-name><introspection-schemas>*:innodb</introspection-schemas><driver-properties><property name="autoReconnect" value="true"/><property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL"/><property name="tinyInt1isBit" value="false"/><property name="characterEncoding" value="utf8"/><property name="characterSetResults" value="utf8"/><property name="yearIsDateType" value="false"/></driver-properties></data-source>
-#END#
-
-#LocalDataSource: west - prod-db - dba
-#BEGIN#
-<data-source source="LOCAL" name="west - prod-db - dba" uuid="746de7b6-1d23-4944-a6e3-8ee1bc0aaefc"><database-info product="MySQL" version="5.7.23-log" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.7.23" exact-driver-version="8.0"><extra-name-characters>#@</extra-name-characters><identifier-quote-string>`</identifier-quote-string></database-info><case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/><driver-ref>mysql.8</driver-ref><synchronize>true</synchronize><jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver><jdbc-url>jdbc:mysql://prod-db.ceswqsh4nhmq.us-west-2.rds.amazonaws.com:3306/innodb</jdbc-url><secret-storage>master_key</secret-storage><user-name>dba</user-name><introspection-schemas>*:@</introspection-schemas><driver-properties><property name="autoReconnect" value="true"/><property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL"/><property name="tinyInt1isBit" value="false"/><property name="characterEncoding" value="utf8"/><property name="characterSetResults" value="utf8"/><property name="yearIsDateType" value="false"/></driver-properties></data-source>
-#END#
-
-#LocalDataSource: west - prod-db - replica
-#BEGIN#
-<data-source source="LOCAL" name="west - prod-db - replica" uuid="f47e5bf6-35ed-417e-9949-912b05c01f38"><database-info product="MySQL" version="5.7.23-log" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.15 (Revision: 79a4336f140499bd22dd07f02b708e163844e3d5)" dbms="MYSQL" exact-version="5.7.23" exact-driver-version="8.0"><extra-name-characters>#@</extra-name-characters><identifier-quote-string>`</identifier-quote-string></database-info><case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/><driver-ref>mysql.8</driver-ref><synchronize>true</synchronize><jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver><jdbc-url>jdbc:mysql://prod-db-replica.ceswqsh4nhmq.us-west-2.rds.amazonaws.com:3306/innodb</jdbc-url><secret-storage>master_key</secret-storage><user-name>dba</user-name><introspection-schemas>*:@</introspection-schemas><driver-properties><property name="autoReconnect" value="true"/><property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL"/><property name="tinyInt1isBit" value="false"/><property name="characterEncoding" value="utf8"/><property name="characterSetResults" value="utf8"/><property name="yearIsDateType" value="false"/></driver-properties></data-source>
-#END#
-
-
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="prod-db-replica" uuid="1a0986d0-0c9d-4576-a1bf-60bab1f830f8">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://prod-db-replica.frdstr.com:3306/innodb</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="prod-billing-dba" uuid="0f4c2de3-c2a7-4aac-b0a3-83b291889b23">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://prod-billing-db.frdstr.com:3306/innodb</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="prod-db-dba" uuid="70e946c9-8647-4347-a0fd-6863107dbba5">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://prod-db.frdstr.com:3306/innodb</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="dev-db" uuid="78da9b6d-046e-4894-a599-eab030d35667">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://develop-db.frdstr.com:3306/innodb</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="analytics@rs.frdstr.com" uuid="9fbaebf2-d7b4-44cb-ba8c-d4b526812851">
+      <driver-ref>redshift</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.amazon.redshift.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:redshift://rs.frdstr.com:5439/analytics?ssl=true&amp;sslfactory=com.amazon.redshift.ssl.NonValidatingFactory</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="west - prod-db - dba" uuid="746de7b6-1d23-4944-a6e3-8ee1bc0aaefc">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://prod-db.ceswqsh4nhmq.us-west-2.rds.amazonaws.com:3306/innodb</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="west - prod-db - replica" uuid="f47e5bf6-35ed-417e-9949-912b05c01f38">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://prod-db-replica.ceswqsh4nhmq.us-west-2.rds.amazonaws.com:3306/innodb</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>
