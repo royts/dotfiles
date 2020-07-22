@@ -9,10 +9,14 @@ ln -s $HOME/dotfiles/git/.gitconfig $HOME/.gitconfig
 ln -s $HOME/dotfiles/vim/.vimrc $HOME/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
-ln -s /usr/local/bin/pip $HOME/opt/pip
-ln -s /usr/local/bin/python2 $HOME/opt/python
-ln -s /usr/local/bin/python3 $HOME/opt/python3
+brew install pyenv
+pyenv install 2.7.17
+pyenv global 2.7.17
+#ln -s /usr/local/bin/pip $HOME/opt/pip
+#ln -s /usr/local/bin/python2 $HOME/opt/python
+#ln -s /usr/local/bin/python3 $HOME/opt/python3
 ln -s $HOME/dotfiles/vscode/keybindings.json /Library/Application\ Support/Code/User/keybindings.json
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 pip install tabview
 
 # npm global in PATH
@@ -32,3 +36,6 @@ nativefier --name "Zendesk" https://forter.zendesk.com/ --internal-urls "https:/
 
 # cursor speed
 defaults write NSGlobalDomain KeyRepeat -int 2
+
+defaults -currentHost delete -globalDomain AppleFontSmoothing
+defaults -currentHost write -globalDomain AppleFontSmoothing -int 2

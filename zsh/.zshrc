@@ -61,7 +61,7 @@ plugins=(
   osx
 )
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/opt:$PATH"
+#export PATH="$HOME/opt:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 source $ZSH/oh-my-zsh.sh
 
@@ -117,6 +117,7 @@ ssh-dev () {
 gciamp () {
   git ci -am "$1" && git push
 }
+alias gpm='git co master && git pull'
 
 aws-ls-region () {
   filter="Name=tag:Name,Values=*${1}*"
@@ -136,20 +137,33 @@ time-stamp-millis-to-date () {
   trimmed=${arg[1,-4]}
   echo ${date -r $trimmed}
 }
+get-task(){
+  s3-get 'prod-forter-tasks/'$1
+}
 
 s3-get () {
-  output=`aws s3 cp s3://$1 /Users/roy-work/test`
+  output=`aws s3 cp s3://$1 $HOME/test`
   file_path=$(echo $output|awk '{print $NF}')
-  vi $file_path
+  echo '==================>'$file_path
+  vim $file_path
 }
-sqs-find-by-name (){
+aws-sqs-list(){
   aws sqs list-queues  | grep $1
 }
-sqs-messages-count-by-quue-url (){
+aws-sqs-messages-count (){
   aws sqs get-queue-attributes --attribute-names ApproximateNumberOfMessages --queue-url $1
 }
-sqs-purge-queue(){
+aws-sqs-purge(){
   aws sqs purge-queue --queue-url $1
+}
+aws-elb-list(){
+  aws elb describe-load-balancers --query "LoadBalancerDescriptions[*].LoadBalancerName" | grep $1
+}
+aws-elb-instances-list(){
+  aws elb describe-load-balancers --load-balancer-names $1 --query "LoadBalancerDescriptions[*].Instances"
+}
+aws-ec2-instance-list(){
+ aws ec2 describe-instance-information --filters "Key=InstanceIds,Values=$1" --query "InstanceInformationList[*].ComputerName"
 }
 real_path(){
   echo "$(cd "$(dirname "$1")"; pwd -P)/$(basename "$1")"
@@ -221,4 +235,13 @@ bindkey '^v' edit-command-line
 #bindkey -v '^?' backward-delete-char
 alias port-listeners-list='lsof -iTCP -sTCP:LISTEN -P -n'
 
+# use pyenv shims. Consider moving to links
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
+alias ecr-login="`aws ecr get-login --no-include-email`"
+# nvm
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
