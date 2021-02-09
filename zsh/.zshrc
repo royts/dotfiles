@@ -200,6 +200,8 @@ if [ -f '/Users/roy-work/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source
 if [ -f '/Users/roy-work/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/roy-work/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 alias gff='git feature from'
+alias fffa='forter feature from -a '
+alias fffp='forter feature pr -r'
 alias docke-pps="docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}' "
 alias i='ipython'
 
@@ -236,12 +238,15 @@ bindkey '^v' edit-command-line
 alias port-listeners-list='lsof -iTCP -sTCP:LISTEN -P -n'
 
 # use pyenv shims. Consider moving to links
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+#if command -v pyenv 1>/dev/null 2>&1; then
+ #eval "$(pyenv init -)"
+#fi
 
-alias ecr-login="`aws ecr get-login --no-include-email`"
-# nvm
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+alias pyp="pip install -i https://pypi.python.org/simple/"
+
+source /Users/roytsabari/.forterrc
+
+# Created by `userpath` on 2020-10-08 18:20:01
+export PATH="$PATH:/Users/roytsabari/.local/bin"
+autoload -U bashcompinit
+bashcompinit

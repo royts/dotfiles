@@ -1,4 +1,4 @@
-# many goodies from here and all around http://stackoverflow.com/questions/267761/what-does-your-gitconfig-contain
+ # goodies from here and all around http://stackoverflow.com/questions/267761/what-does-your-gitconfig-contain
 # should say thanks to: github.com/rantav/dotfiles and github.com/holman/dotfiles
 
 [user]
@@ -95,8 +95,15 @@
   trustExitCode = false
 
 [core]
-  pager = less -FRSX
-  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  ;pager = less -FRSX
+  ;whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  pager = delta
+
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    syntax-theme = Monokai Extended
+    side-by-side = true
 
 [apply]
   whitespace = fix
