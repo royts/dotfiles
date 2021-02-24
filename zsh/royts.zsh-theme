@@ -1,7 +1,7 @@
 HOME_HOST='Roys-MacBook-Pro.local'
 hostname=`hostname`
 
-if [ $hostname != "$HOME_HOST" ] || [ $USER != "roy-work" ]; then
+if [ $hostname != "$HOME_HOST" ] || [ $USER != "roy" ]; then
   host_stuff='%n@%m:'
 else
   host_stuff=''
