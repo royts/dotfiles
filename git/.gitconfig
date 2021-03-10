@@ -119,3 +119,7 @@
 	cmd = "code --wait "
 [difftool "vscode"]
 	cmd = "code --wait --diff  "
+[include]
+	path = ../.gitconfig
+[pull]
+	rebase = false

@@ -7,6 +7,7 @@ source $HOME/.zshrc
 ln -s $HOME/dotfiles/git/gitconfig.symlink $HOME/gitconfig.symlink
 ln -s $HOME/dotfiles/git/.gitconfig $HOME/.gitconfig
 ln -s $HOME/dotfiles/vim/.vimrc $HOME/.vimrc
+ln -s $HOME/dotfiles/bin $HOME/bin
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 brew install pyenv

@@ -2,10 +2,13 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="royts"
 #. $HOME/.oh-my-zsh/plugins/z/z.sh
 export PATH="$HOME/.local/bin:$PATH" # pip install bin
+export PATH="$HOME/bin:$PATH"
 plugins=(
   git
   z
   vi-mode
+  zsh-autosuggestions
+  zsh-syntax-highlighting # got to be the last one!
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -97,6 +100,7 @@ alias i='ipython'
 alias vim-clean-pyc='find . -name "*.pyc" -exec rm {} \;'
 #set -o vi
 export EDITOR=vim
+alias vim=vimx
 #bindkey -v
 #bindkey '^R' history-incremental-search-backward
 
@@ -106,4 +110,22 @@ bindkey '^v' edit-command-line
 
 alias port-listeners-list='lsof -iTCP -sTCP:LISTEN -P -n'
 
+# python
+#
 alias pyp="pip install -i https://pypi.python.org/simple/"
+export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="/home/roy/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# intellij
+alias ij="/opt/idea-IU-203.7148.57/bin/idea.sh"
+
+# docker
+alias docker-deamon-start='sudo systemctl start docker'
+
+# tilix terminal
+#if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+#fi
+alias npm-install-no-husky='HUSKY_SKIP_INSTALL=1 npm install'
