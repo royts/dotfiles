@@ -3,6 +3,7 @@ export ZSH_THEME="royts"
 #. $HOME/.oh-my-zsh/plugins/z/z.sh
 export PATH="$HOME/.local/bin:$PATH" # pip install bin
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/dev/first/nirops/scripts:$PATH"
 plugins=(
   git
   z
@@ -28,7 +29,49 @@ gciamp () {
   git ci -am "$1" && git push
 }
 
+export BARNCH_NAME_PREFIX='royts-'
+export TASK_URL_PREFIX='https://dev.azure.com/firstdag/Pikaia/_workitems/edit/'
+
+# Creates a branch and push it to origin. Requires gh cli
+# use: gitbr 'DESCRIPTION'
+gitbr () {   
+  title=$1
+  trimmed=`expr "$title" : "^\ *\(.*[^ ]\)\ *$"`
+  branch_name="$BARNCH_NAME_PREFIX${trimmed// /-}"
+  git checkout -b $branch_name
+  git push -u origin $branch_name
+
+}
+
+# Creates a PR and open it on the browser. Requires gh cli
+# use: gitpr 'PR TITLE' TASK_NUMBER(optional)
+gitpr () { 
+  pr_body=' '
+  task_number=$2
+  if [[ -n "${task_number}" ]]
+      then
+          pr_body="task: $TASK_URL_PREFIX/$2"
+  fi
+  gh pr create -t $1 -b $pr_body && gh pr view --web
+}
+
+# Creates a branch and a PR. Requires gh cli
+# use: gitbpr 'TITLE' TASK_NUMBER(optional)
+gitbpr () {
+   title=$1
+   task_number=$2
+   gitbr $title
+   git add . 
+   git ci -m $title
+   gitpr $title $task_number
+}
+
+gitpr-develop-to-master() { # requires gh cli
+  gh pr create -t $1 -H 'develop' -B 'master' -b '' && gh pr view --web
+}
+
 alias rebase-master='git fetch && git merge origin/master'
+alias rebase-develop='git fetch && git merge origin/develop'
 
 ###############
 # aws
@@ -100,7 +143,6 @@ alias i='ipython'
 alias vim-clean-pyc='find . -name "*.pyc" -exec rm {} \;'
 #set -o vi
 export EDITOR=vim
-alias vim=vimx
 #bindkey -v
 #bindkey '^R' history-incremental-search-backward
 
