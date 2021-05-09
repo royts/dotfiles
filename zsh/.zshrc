@@ -171,3 +171,6 @@ alias docker-deamon-start='sudo systemctl start docker'
         source /etc/profile.d/vte.sh
 #fi
 alias npm-install-no-husky='HUSKY_SKIP_INSTALL=1 npm install'
+
+# aws
+export AWS_USER="roy@firstdag.com"
