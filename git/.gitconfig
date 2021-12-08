@@ -3,7 +3,7 @@
 
 [user]
 	name = Roy Tsabari
-	email = roy.tsabari@forter.com
+	email = roy@firstdag.com
 
 [color]
   diff = auto
@@ -95,16 +95,22 @@
   cmd = "diffmerge" -3 -merge -wait "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
   trustExitCode = false
 
-[core]
-  ;pager = less -FRSX
-  ;whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  pager = delta
-
-[delta]
-    plus-color = "#012800"
-    minus-color = "#340001"
-    syntax-theme = Monokai Extended
-    side-by-side = true
+# # DELTA DIFF
+# [pager]
+#   diff = delta
+#   log = delta
+#   reflog = delta
+#   show = delta
+# 
+# [interactive]
+#   diffFilter = delta --color-only --features=interactive
+# 
+# [delta]
+#     plus-color = "#012800"
+#     minus-color = "#340001"
+#     syntax-theme = Monokai Extended
+#     side-by-side = true
+# # DELTA END
 
 [apply]
   whitespace = fix

@@ -174,4 +174,4 @@ let &t_EI="\033[1 q" " end insert mode
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 set expandtab
 set mouse=a
-set clipboard=unnamedplus
+"set clipboard=unnamedplus

@@ -29,6 +29,9 @@ gciamp () {
   git ci -am "$1" && git push
 }
 
+gcob () { # git checkout back
+  git checkout @{-$1}
+}
 export BARNCH_NAME_PREFIX='royts-'
 export TASK_URL_PREFIX='https://dev.azure.com/firstdag/Pikaia/_workitems/edit/'
 
@@ -52,8 +55,9 @@ gitpr () {
       then
           pr_body="task: $TASK_URL_PREFIX/$2"
   fi
-  gh pr create -t $1 -b $pr_body && gh pr view --web
+  gh pr create -d -t $1 -b $pr_body && gh pr view --web
 }
+alias gitopr='gh pr view -w'
 
 # Creates a branch and a PR. Requires gh cli
 # use: gitbpr 'TITLE' TASK_NUMBER(optional)
@@ -67,11 +71,11 @@ gitbpr () {
 }
 
 gitpr-develop-to-master() { # requires gh cli
-  gh pr create -t $1 -H 'develop' -B 'master' -b '' && gh pr view --web
+  gh pr create -t $1 -H 'develop' -B 'main' -b '' && gh pr view --web
 }
 
-alias rebase-master='git fetch && git merge origin/master'
-alias rebase-develop='git fetch && git merge origin/develop'
+alias rebase-main='git pull --rebase origin master'
+alias rebase-develop='git pull --rebase origin develop'
 
 ###############
 # aws
@@ -150,7 +154,13 @@ export EDITOR=vim
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^v' edit-command-line
 
-alias port-listeners-list='lsof -iTCP -sTCP:LISTEN -P -n'
+port_liteners () {
+        if [ "$(uname 2> /dev/null)" == "Linux" ]; then
+                sudo netstat -nlp | grep "$1"
+        else
+                lsof -iTCP -sTCP:LISTEN -P -n $1
+        fi
+}
 
 # python
 #
@@ -166,11 +176,17 @@ alias ij="/opt/idea-IU-203.7148.57/bin/idea.sh"
 # docker
 alias docker-deamon-start='sudo systemctl start docker'
 
-# tilix terminal
-#if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-#fi
 alias npm-install-no-husky='HUSKY_SKIP_INSTALL=1 npm install'
 
 # aws
 export AWS_USER="roy@firstdag.com"
+
+export HUSKY_SKIP_HOOKS=1
+export HUSKY=0
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(pyenv virtualenv-init -)"
+export PATH="$HOME/.tfenv/bin:$PATH"
+alias resolution-reset='xrandr --output eDP-1-1 --mode 1920x1080'

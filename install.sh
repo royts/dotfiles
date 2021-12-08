@@ -2,7 +2,9 @@
 
 # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # install with package manager
-git zsh vim-gui-common ncdu
+git zsh vim-gui-common ncdu fzf
+
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s /bin/zsh roy
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -12,7 +14,9 @@ ln -s $HOME/dotfiles/zsh/royts.zsh-theme $HOME/.oh-my-zsh/themes/royts.zsh-theme
 source $HOME/.zshrc
 ln -s $HOME/dotfiles/git/gitconfig.symlink $HOME/gitconfig.symlink
 ln -s $HOME/dotfiles/git/.gitconfig $HOME/.gitconfig
+ln -s $HOME/dotfiles/git/.gitignore $HOME/.gitignore
 ln -s $HOME/dotfiles/vim/.vimrc $HOME/.vimrc
+ln -s $HOME/dotfiles/vim/.ideavimrc $HOME/.ideavimrc
 ln -s $HOME/dotfiles/bin $HOME/bin
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
