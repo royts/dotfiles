@@ -1,3 +1,5 @@
+# install zsh: brew install zsh (new osx comes with it)
+# install oh-my-zsh sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 USER_HOME=~/
 SCRIPT_LOCATION="$(cd "$(dirname "$0")" && pwd)"
 

@@ -1,3 +1,5 @@
+export FZF_BASE=/opt/homebrew/opt/fzf
+
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="royts"
 #. $HOME/.oh-my-zsh/plugins/z/z.sh
@@ -7,6 +9,7 @@ export PATH="$HOME/dev/first/nirops/scripts:$PATH"
 plugins=(
   git
   z
+  fzf
   vi-mode
   zsh-autosuggestions
   zsh-syntax-highlighting # got to be the last one!
@@ -35,20 +38,21 @@ gcob () { # git checkout back
 export BARNCH_NAME_PREFIX='royts-'
 export TASK_URL_PREFIX='https://dev.azure.com/firstdag/Pikaia/_workitems/edit/'
 
-# Creates a branch and push it to origin. Requires gh cli
-# use: gitbr 'DESCRIPTION'
+# Creates a branch and push it to origin.
+#   usage: gitbr 'DESCRIPTION'
 gitbr () {   
   title=$1
-  trimmed=`expr "$title" : "^\ *\(.*[^ ]\)\ *$"`
+  clean_title=${title//(\[|\]|\/|,)/-}
+  trimmed=`expr "$clean_title" : "^\ *\(.*[^ ]\)\ *$"`
   branch_name="$BARNCH_NAME_PREFIX${trimmed// /-}"
   git checkout -b $branch_name
   git push -u origin $branch_name
-
 }
 
-# Creates a PR and open it on the browser. Requires gh cli
-# use: gitpr 'PR TITLE' TASK_NUMBER(optional)
-gitpr () { 
+# GITHUB ###############
+# Creates a PR on Github and open it on the browser. Requires gh cli
+# use: ghbr 'PR TITLE' TASK_NUMBER(optional)
+ghpr () { 
   pr_body=' '
   task_number=$2
   if [[ -n "${task_number}" ]]
@@ -57,21 +61,58 @@ gitpr () {
   fi
   gh pr create -d -t $1 -b $pr_body && gh pr view --web
 }
-alias gitopr='gh pr view -w'
-
-# Creates a branch and a PR. Requires gh cli
-# use: gitbpr 'TITLE' TASK_NUMBER(optional)
-gitbpr () {
+alias ghopr='gh pr view -w'
+#
+# Creates a branch and a PR on Github. Requires gh cli
+# use: ghpr 'TITLE' TASK_NUMBER(optional)
+ghbpr () {
    title=$1
    task_number=$2
    gitbr $title
    git add . 
    git ci -m $title
-   gitpr $title $task_number
+   git push
+   ghpr $title $task_number
+}
+
+# GITLAB ###############
+
+# Creates a PR on Gitlab and open it on the browser. Requires the gitlab cli
+# use: glbr 'PR TITLE' TASK_NUMBER(optional)
+glpr () { 
+  pr_body=' '
+  task_number=$2
+  if [[ -n "${task_number}" ]]
+      then
+          pr_body="task: $TASK_URL_PREFIX/$2"
+  fi
+  glab mr create --draft -y -t $1 -d $pr_body && glab mr view --web
+}
+alias glopr="glab mr view -w"
+
+# Creates a branch and a PR on Gitlab
+# use: ghpr 'TITLE' TASK_NUMBER(optional)
+glbpr () {
+   title=$1
+   task_number=$2
+   gitbr $title
+   git add . 
+   git ci -m $title
+   git push
+   glpr $title $task_number
 }
 
 gitpr-develop-to-master() { # requires gh cli
   gh pr create -t $1 -H 'develop' -B 'main' -b '' && gh pr view --web
+}
+
+# ask bors to merge my PR by commenting
+bors-merge() {
+  gh pr comment -b 'bors merge'
+}
+
+gitpr-checks() {
+  gh pr checks
 }
 
 alias rebase-main='git pull --rebase origin master'
@@ -84,13 +125,16 @@ aws-ls-region () {
   filter="Name=tag:Name,Values=*${1}*"
   aws ec2 --region $2 describe-instances --filters $filter --query 'Reservations[].Instances[].[[Tags[?Key==`Name`].Value, PublicIpAddress, PrivateIpAddress, PublicDnsName][]]' --output table
 }
-
 aws-ls () {
-  aws-ls-region $1 'us-east-1'
+  filter="Name=tag:Name,Values=*${1}*"
+  aws ec2 describe-instances --filters $filter --query 'Reservations[].Instances[].[[Tags[?Key==`Name`].Value, PublicIpAddress, PrivateIpAddress, PublicDnsName][]]' --output table
 }
-
-aws-ls-west (){
-  aws-ls-region $1 'us-west-2'
+aws-ssh () {
+  filter="Name=tag:Name,Values=*${1}*"
+  query="Reservations[*].Instances[*].PublicIpAddress"
+  public_ip=$(aws ec2 describe-instances --filters $filter --query $query --output text)
+  public_ip=${public_ip/$'\r'/}
+  ssh ubuntu@$public_ip
 }
 
 s3-get () {
@@ -135,7 +179,9 @@ csv () {
     tabview $1
 }
 
-alias webServerHere='python -m SimpleHTTPServer 8000'
+alias webServerHere='python -m http.server 8000'
+alias webServerHere-python-2='python -m SimpleHTTPServer 8000'
+
 
 # ag
 alias ag_js='ag -G "/.js$" $1'
@@ -154,12 +200,14 @@ export EDITOR=vim
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^v' edit-command-line
 
-port_liteners () {
-        if [ "$(uname 2> /dev/null)" == "Linux" ]; then
-                sudo netstat -nlp | grep "$1"
-        else
-                lsof -iTCP -sTCP:LISTEN -P -n $1
-        fi
+listening() {
+    if [ $# -eq 0 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P
+    elif [ $# -eq 1 ]; then
+        sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+    else
+        echo "Usage: listening [pattern]"
+    fi
 }
 
 # python
@@ -167,14 +215,25 @@ port_liteners () {
 alias pyp="pip install -i https://pypi.python.org/simple/"
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/home/roy/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # intellij
 alias ij="/opt/idea-IU-203.7148.57/bin/idea.sh"
 
+docker-kill-running-containers () {
+  docker kill $(docker ps -q)
+}
+docker-remove-all-running-containers () {
+  docker rm $(docker ps -a -q)
+}
+docker-remove-all-images () {
+  docker rmi $(docker images -q)
+}
+
 # docker
 alias docker-deamon-start='sudo systemctl start docker'
+
 
 alias npm-install-no-husky='HUSKY_SKIP_INSTALL=1 npm install'
 
@@ -183,10 +242,30 @@ export AWS_USER="roy@firstdag.com"
 
 export HUSKY_SKIP_HOOKS=1
 export HUSKY=0
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval "$(pyenv virtualenv-init -)"
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# Roy: NVM load is very slow. That is why we do it in a custom way:
+# export PATH=~/.nvm/versions/node/v18.13.0/bin:$PATH
+# # Load NVM
+# export NVM_DIR=~/.nvm
+# [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
+
+
 export PATH="$HOME/.tfenv/bin:$PATH"
 alias resolution-reset='xrandr --output eDP-1-1 --mode 1920x1080'
+eval "$(pyenv init -)"
+export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="/Users/royts/.deta/bin:$PATH"
+decode () {
+  echo "$1" | base64 -d ; echo
+}
+alias vim ='nvim'

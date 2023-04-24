@@ -2,16 +2,10 @@
 
 # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # install with package manager
-git zsh vim-gui-common ncdu fzf
+git zsh vim-gui-common ncdu fzf slack jetbrains-toolbox visual-studio-code geany spotify yt-music keep maccy jq
+https://docs.docker.com/desktop/mac/install/
 
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s /bin/zsh roy
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-mv $HOME/.zshrc{,_old} && ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
-ln -s $HOME/dotfiles/zsh/royts.zsh-theme $HOME/.oh-my-zsh/themes/royts.zsh-theme
-source $HOME/.zshrc
 ln -s $HOME/dotfiles/git/gitconfig.symlink $HOME/gitconfig.symlink
 ln -s $HOME/dotfiles/git/.gitconfig $HOME/.gitconfig
 ln -s $HOME/dotfiles/git/.gitignore $HOME/.gitignore
@@ -27,17 +21,24 @@ pyenv global 2.7.10
 # (osx) defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 pip install tabview
 
+brew install pipenv
+ln -s $(brew --cellar python)/* ~/.pyenv/versions/ # The way Homebrew works nowadays
+pipenv --python ~/.pyenv/versions/3.9.9/bin/python3
+
 # (still needed?)# npm global in PATH
 # (still needed?)mkdir $HOME/.npm-global
 # (still needed?)npm config set prefix `$HOME/.npm-global`
 
+# OSX stuff
+# cursor speed
+defaults write NSGlobalDomain KeyRepeat -int 2
 
+# font smoothing
+defaults -currentHost delete -globalDomain AppleFontSmoothing
+defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
 
-# (osx) # cursor speed
-# (osx) defaults write NSGlobalDomain KeyRepeat -int 2
-# (osx) 
-# (osx) defaults -currentHost delete -globalDomain AppleFontSmoothing
-# (osx) defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
+# apple cheapset
+softwareupdate --install-rosetta
 
 # gh - fedora
 sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo

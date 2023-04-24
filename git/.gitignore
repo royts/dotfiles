@@ -1,4 +1,5 @@
 # vim
 *~
-*.swp
+.swp
 *.swo
+.idea/
