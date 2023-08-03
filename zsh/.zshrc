@@ -2,7 +2,6 @@ export FZF_BASE=/opt/homebrew/opt/fzf
 
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="royts"
-#. $HOME/.oh-my-zsh/plugins/z/z.sh
 export PATH="$HOME/.local/bin:$PATH" # pip install bin
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/dev/first/nirops/scripts:$PATH"
@@ -215,8 +214,9 @@ listening() {
 alias pyp="pip install -i https://pypi.python.org/simple/"
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/home/roy/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # intellij
 alias ij="/opt/idea-IU-203.7148.57/bin/idea.sh"
@@ -240,23 +240,12 @@ alias npm-install-no-husky='HUSKY_SKIP_INSTALL=1 npm install'
 # aws
 export AWS_USER="roy@firstdag.com"
 
-export HUSKY_SKIP_HOOKS=1
-export HUSKY=0
-
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-# Roy: NVM load is very slow. That is why we do it in a custom way:
-# export PATH=~/.nvm/versions/node/v18.13.0/bin:$PATH
-# # Load NVM
-# export NVM_DIR=~/.nvm
-# [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 
 export PATH="$HOME/.tfenv/bin:$PATH"
 alias resolution-reset='xrandr --output eDP-1-1 --mode 1920x1080'
-eval "$(pyenv init -)"
-export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
 
 autoload -Uz compinit
 zstyle ':completion:*' menu select
@@ -269,3 +258,4 @@ decode () {
   echo "$1" | base64 -d ; echo
 }
 alias vim ='nvim'
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
