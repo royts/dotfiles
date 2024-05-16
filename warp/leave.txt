@@ -1,0 +1,5 @@
+From the Command Palette, enter Save New Launch Configuration.
+Use the file name: warp_config
+
+run:
+cp $HOME/.warp/launch_configurations/warp_config.yaml $HOME/dotfiles/warp/
