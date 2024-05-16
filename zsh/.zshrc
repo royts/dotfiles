@@ -78,7 +78,7 @@ ghbpr () {
 
 # Creates a PR on Gitlab and open it on the browser. Requires the gitlab cli
 # use: glbr 'PR TITLE' TASK_NUMBER(optional)
-glpr () { 
+glmr () { 
   pr_body=' '
   task_number=$2
   if [[ -n "${task_number}" ]]
@@ -87,18 +87,18 @@ glpr () {
   fi
   glab mr create --draft -y -t $1 -d $pr_body && glab mr view --web
 }
-alias glopr="glab mr view -w"
+alias glomr="glab mr view -w"
 
 # Creates a branch and a PR on Gitlab
 # use: ghpr 'TITLE' TASK_NUMBER(optional)
-glbpr () {
+glbmr () {
    title=$1
    task_number=$2
    gitbr $title
    git add . 
    git ci -m $title
    git push
-   glpr $title $task_number
+   glmr $title $task_number
 }
 
 gitpr-develop-to-master() { # requires gh cli
