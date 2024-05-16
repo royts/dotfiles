@@ -7,9 +7,7 @@ docker-compose
 fzf
 gh
 giflib
-git
 git-delta
-glab
 gobject-introspection
 helm
 jpeg
@@ -30,4 +28,6 @@ spotify-tui
 the_silver_searcher
 transmission-cli
 wget
-youtube-dl
+yt-dlp
+zsh
+
