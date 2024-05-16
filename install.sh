@@ -1,10 +1,17 @@
 #! /bin/bash
 
-# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# install with package manager
-git zsh vim-gui-common ncdu fzf slack jetbrains-toolbox visual-studio-code geany spotify yt-music keep maccy jq
-https://docs.docker.com/desktop/mac/install/
+# brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/roytsabari/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# install brew packagest
+~/dotfiles/brew/install.sh
+
+# oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+~/dotfiles/zsh/install.sh
 
 ln -s $HOME/dotfiles/git/gitconfig.symlink $HOME/gitconfig.symlink
 ln -s $HOME/dotfiles/git/.gitconfig $HOME/.gitconfig
@@ -16,7 +23,21 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 curl https://pyenv.run | bash
 pyenv install 3.7.10
-pyenv global 2.7.10
+pyenv global 3.7.10
+
+# OSX stuff
+# cursor speed
+defaults write NSGlobalDomain KeyRepeat -int 2
+
+#################
+# OLD
+#################
+
+# install with package manager
+#git zsh vim-gui-common ncdu fzf slack jetbrains-toolbox visual-studio-code geany spotify yt-music keep maccy jq
+# https://docs.docker.com/desktop/mac/install/
+
+
 # (osx) ln -s $HOME/dotfiles/vscode/keybindings.json /Library/Application\ Support/Code/User/keybindings.json
 # (osx) defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
 pip install tabview
@@ -29,9 +50,6 @@ pipenv --python ~/.pyenv/versions/3.9.9/bin/python3
 # (still needed?)mkdir $HOME/.npm-global
 # (still needed?)npm config set prefix `$HOME/.npm-global`
 
-# OSX stuff
-# cursor speed
-defaults write NSGlobalDomain KeyRepeat -int 2
 
 # font smoothing
 defaults -currentHost delete -globalDomain AppleFontSmoothing
@@ -52,4 +70,3 @@ sudo apt install gh
 
 ## https://github.com/mas-cli/mas
 brew install mas
-mas install 1352778147 # bitwarden
